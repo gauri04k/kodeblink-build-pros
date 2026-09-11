@@ -59,42 +59,58 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-brand-mint: var(--brand-mint);
+  --color-brand-black: var(--brand-black);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-surface: var(--brand-surface);
+  --color-brand-light: var(--brand-light);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display-family);
+  --font-mono: var(--font-mono-family);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --radius: 0.25rem;
+  --brand-mint: oklch(0.87 0.19 170);
+  --brand-black: oklch(0.02 0 0);
+  --brand-dark: oklch(0.07 0.015 190);
+  --brand-surface: oklch(0.12 0.018 190);
+  --brand-light: oklch(0.98 0.005 180);
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-display-family: "Inter", system-ui, sans-serif;
+  --font-mono-family: "JetBrains Mono", ui-monospace, monospace;
+  --background: var(--brand-black);
+  --foreground: var(--brand-light);
+  --card: var(--brand-surface);
+  --card-foreground: var(--brand-light);
+  --popover: var(--brand-surface);
+  --popover-foreground: var(--brand-light);
+  --primary: var(--brand-mint);
+  --primary-foreground: var(--brand-black);
+  --secondary: var(--brand-surface);
+  --secondary-foreground: var(--brand-light);
+  --muted: oklch(0.45 0.015 190);
+  --muted-foreground: oklch(0.68 0.015 190);
+  --accent: oklch(0.16 0.022 190);
+  --accent-foreground: var(--brand-light);
+  --destructive: oklch(0.63 0.2 28);
+  --destructive-foreground: var(--brand-light);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 18%);
+  --ring: var(--brand-mint);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --sidebar: var(--brand-dark);
+  --sidebar-foreground: var(--brand-light);
+  --sidebar-primary: var(--brand-mint);
+  --sidebar-primary-foreground: var(--brand-black);
+  --sidebar-accent: var(--brand-surface);
+  --sidebar-accent-foreground: var(--brand-light);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--brand-mint);
 }
 
 .dark {
@@ -140,5 +156,52 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-body);
+    min-width: 320px;
   }
+
+  ::selection {
+    background-color: var(--color-brand-mint);
+    color: var(--color-brand-black);
+  }
+
+  a,
+  button,
+  input,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@utility section-shell {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@utility focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--color-brand-mint);
+    outline-offset: 3px;
+  }
+}
+
+@utility page-grid {
+  background-image: linear-gradient(to right, oklch(1 0 0 / 4%) 1px, transparent 1px), linear-gradient(to bottom, oklch(1 0 0 / 4%) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+}
+
+@utility dashboard-grid {
+  background-image: linear-gradient(to right, oklch(1 0 0 / 6%) 1px, transparent 1px), linear-gradient(to bottom, oklch(1 0 0 / 6%) 1px, transparent 1px);
+  background-size: 2rem 2rem;
+}
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-up { animation: reveal-up 600ms ease-out both; }
 }
