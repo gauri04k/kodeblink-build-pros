@@ -78,7 +78,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "KODEBLINK — Custom Design & Technology" },
-      { name: "description", content: "KODEBLINK builds custom websites, business software, and manufacturing technology around your business." },
+      {
+        name: "description",
+        content:
+          "KODEBLINK builds custom websites, business software, and manufacturing technology around your business.",
+      },
       { name: "author", content: "KODEBLINK" },
       { property: "og:title", content: "KODEBLINK — Custom Design & Technology" },
       { property: "og:description", content: "Technology built around your business." },
