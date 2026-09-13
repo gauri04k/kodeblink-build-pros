@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://kodeblink-build-pros.lovable.app/sitemap.xml

@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SmartReceiptRouteImport } from './routes/smart-receipt'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 
@@ -42,6 +43,11 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SmartReceiptRoute = SmartReceiptRouteImport.update({
   id: '/smart-receipt',
   path: '/smart-receipt',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/portfolio': typeof PortfolioRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/smart-receipt': typeof SmartReceiptRoute
   '/solutions': typeof SolutionsRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/portfolio': typeof PortfolioRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/smart-receipt': typeof SmartReceiptRoute
   '/solutions': typeof SolutionsRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/portfolio': typeof PortfolioRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/smart-receipt': typeof SmartReceiptRoute
   '/solutions': typeof SolutionsRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/portfolio'
     | '/services'
+    | '/sitemap.xml'
     | '/smart-receipt'
     | '/solutions'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/portfolio'
     | '/services'
+    | '/sitemap.xml'
     | '/smart-receipt'
     | '/solutions'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/portfolio'
     | '/services'
+    | '/sitemap.xml'
     | '/smart-receipt'
     | '/solutions'
   fileRoutesById: FileRoutesById
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   PortfolioRoute: typeof PortfolioRoute
   ServicesRoute: typeof ServicesRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SmartReceiptRoute: typeof SmartReceiptRoute
   SolutionsRoute: typeof SolutionsRoute
 }
@@ -158,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/smart-receipt': {
       id: '/smart-receipt'
       path: '/smart-receipt'
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   PortfolioRoute: PortfolioRoute,
   ServicesRoute: ServicesRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SmartReceiptRoute: SmartReceiptRoute,
   SolutionsRoute: SolutionsRoute,
 }
